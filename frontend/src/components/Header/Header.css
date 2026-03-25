@@ -1,7 +1,8 @@
 .header {
-    width: 100%;
+    width: 100vw;                /* 🔥 change this */
     height: 90vh;
-    margin: 0;
+
+    margin-left: calc(-50vw + 50%);  /* keep this */
 
     display: flex;
     align-items: center;

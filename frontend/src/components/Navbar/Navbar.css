@@ -1,24 +1,17 @@
 .navbar {
-  padding: 16px 8%;
+  padding: 16px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 12px rgba(0,0,0,.06);
-  border-bottom: 1.5px solid #f0f0f0;
-  background: #2c2c2c;
+  background: #1a1a1a;
   position: sticky;
   top: 0;
   z-index: 100;
-   width: 100vw;           /* full width */
-  margin-left: calc(-50vw + 50%); 
 }
 
-.navbar-brand {
-  font-size: 26px;
-  font-weight: 700;
-  color: white;
-  text-decoration: none;
-  letter-spacing: -0.5px;
+.navbar-logo {
+  width: 150px;
+  cursor: pointer;
 }
 
 .navbar-menu {
@@ -30,18 +23,18 @@
 
 .navbar-menu a {
   text-decoration: none;
-  color: #ddd;
+  color: #fff;
   transition: color 0.2s;
   padding-bottom: 3px;
 }
 
 .navbar-menu a:hover {
-  color: #fff;
+  color: #E02020;
 }
 
 .navbar-menu .active {
   color: #fff;
-  border-bottom: 2px solid #fc8019;
+  border-bottom: 2px solid #E02020;
   padding-bottom: 2px;
 }
 
@@ -54,6 +47,7 @@
 .navbar-right img {
   width: 22px;
   cursor: pointer;
+  filter: brightness(0) invert(1);
   transition: opacity 0.2s;
 }
 
@@ -73,7 +67,7 @@
   border-radius: 50%;
   top: -6px;
   right: -6px;
-  border: 2px solid #fff;
+  border: 2px solid #1a1a1a;
 }
 
 .navbar-right button {
@@ -109,11 +103,11 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: #fff;
+  background-color: #2a2a2a;
   padding: 14px 20px;
   border-radius: 10px;
-  border: 1px solid #eee;
-  box-shadow: 0 8px 24px rgba(0,0,0,.1);
+  border: 1px solid #333;
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
   list-style: none;
   min-width: 140px;
 }
@@ -124,7 +118,7 @@
   gap: 10px;
   cursor: pointer;
   font-size: 14px;
-  color: #333;
+  color: #fff;
   transition: color 0.2s;
 }
 
@@ -138,7 +132,7 @@
 
 .navbar-profile hr {
   border: none;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid #333;
   margin: 0;
 }
 

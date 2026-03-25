@@ -8,7 +8,9 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-content-left">
             <img src={assets.logo} alt="" />
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p>We believe great food deserves great delivery. 
+Cravato connects you with the best restaurants 
+in your city, delivering happiness one meal at a time.</p>
             <div className="footer-social-icons">
                 <img src={assets.facebook_icon} alt="" />
                 <img src={assets.twitter_icon} alt="" />
@@ -28,12 +30,12 @@ const Footer = () => {
             <h2>GET IN TOUCH</h2>
             <ul>
                 <li>+1-212-456-7890</li>
-                <li>contact@tomato.com</li>
+                <li>contact@cravato.com</li>
             </ul>
         </div>
       </div>
       <hr />
-      <p className="footer-copyright">Copyright 2024 © Tomato.com - All Right Reserved.</p>
+      <p className="footer-copyright">Copyright 2026 © Cravato.com - All Right Reserved.</p>
     </div>
   )
 }

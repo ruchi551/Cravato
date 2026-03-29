@@ -96,7 +96,7 @@ export const menu_list = [
         menu_image: menu_2
     },
     {
-        menu_name: "Deserts",
+        menu_name: "Burgers",
         menu_image: menu_3
     },
     {
@@ -350,5 +350,12 @@ export const food_list = [
         price: 15,
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Noodles"
+    }, {
+            _id: "33",
+            name: "Greek Burger",
+            image: food_32,
+            price: 15,
+            description: "It is a burger made with a seasoned patty, often ground beef or lamb, topped with ingredients common in Greek cuisine",
+            category: "Burgers"
     }
 ]

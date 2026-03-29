@@ -1,17 +1,17 @@
 import { createContext, useEffect, useState } from "react";
-import { menu_list } from "../assets/assets";
+import { menu_list, food_list as localFoodList } from "../assets/assets";
 import axios from "axios";
 
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
 
-    const url =  "https://cravato-app-backend.onrender.com"
+    const url = "https://cravato-app-backend.onrender.com"
     const [food_list, setFoodList] = useState([]);
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("")
     const [search, setSearch] = useState('');
-    const [showSearch, setShowSearch] = useState(false);  // ✅ false = hidden by default
+    const [showSearch, setShowSearch] = useState(false);
     const currency = "₹";
     const deliveryCharge = 50;
 
@@ -47,8 +47,13 @@ const StoreContextProvider = (props) => {
     }
 
     const fetchFoodList = async () => {
-        const response = await axios.get(url + "/api/food/list");
-        setFoodList(response.data.data);
+        try {
+            const response = await axios.get(url + "/api/food/list");
+            const dbFoods = response.data.data || [];
+            setFoodList([...localFoodList, ...dbFoods]);
+        } catch (error) {
+            setFoodList(localFoodList);
+        }
     }
 
     const loadCartData = async (token) => {

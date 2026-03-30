@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { menu_list, food_list as localFoodList } from "../assets/assets";
+import { menu_list } from "../assets/assets";
 import axios from "axios";
 
 export const StoreContext = createContext(null);
@@ -49,10 +49,9 @@ const StoreContextProvider = (props) => {
     const fetchFoodList = async () => {
         try {
             const response = await axios.get(url + "/api/food/list");
-            const dbFoods = response.data.data || [];
-            setFoodList([...localFoodList, ...dbFoods]);
+            setFoodList(response.data.data || []);
         } catch (error) {
-            setFoodList(localFoodList);
+            console.log(error);
         }
     }
 

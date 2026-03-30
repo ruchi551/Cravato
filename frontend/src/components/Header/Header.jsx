@@ -1,23 +1,41 @@
 import React from 'react'
 import './Header.css'
-import headerImg from '../../assets/header_img.png'  // ✅ correct path
+import foodVideo from '../../assets/food_video.mp4'
+import { motion } from 'framer-motion'
 
 const Header = () => {
     return (
-        <div 
-            className='header'
-            style={{
-                backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${headerImg})`
-            }}
-        >
+        <div className='header'>
+            <video autoPlay muted loop className='header-video'>
+                <source src={foodVideo} type='video/mp4' />
+            </video>
+            <div className='header-overlay'></div>
             <div className='header-contents'>
-                <h2>Order your favourite food here</h2>
-                <p>
+                <motion.h2
+                    initial={{ opacity: 0, y: -50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                >
+                    Order your favourite food here
+                </motion.h2>
+                <motion.p
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                >
                     Choose from a diverse menu featuring a delectable array of dishes crafted 
                     with the finest ingredients and culinary expertise. Our mission is to satisfy 
                     your cravings and elevate your dining experience, one delicious meal at a time.
-                </p>
-                <button>View Menu</button>
+                </motion.p>
+                <motion.button
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                >
+                    View Menu
+                </motion.button>
             </div>
         </div>
     )

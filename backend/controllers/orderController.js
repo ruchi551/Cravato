@@ -2,16 +2,14 @@ import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js"
 import Stripe from "stripe";
 
-console.log("Stripe Key:", process.env.STRIPE_SECRET_KEY); // ✅ debug line
+console.log("Stripe Key:", process.env.STRIPE_SECRET_KEY);
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-//config variables
 const currency = "inr";
 const deliveryCharge = 50;
 const frontend_URL = 'http://localhost:5173';
 
-// Placing User Order for Frontend using stripe
 const placeOrder = async (req, res) => {
     try {
         const newOrder = new orderModel({
@@ -26,9 +24,7 @@ const placeOrder = async (req, res) => {
         const line_items = req.body.items.map((item) => ({
             price_data: {
                 currency: currency,
-                product_data: {
-                    name: item.name
-                },
+                product_data: { name: item.name },
                 unit_amount: item.price * 100
             },
             quantity: item.quantity
@@ -37,9 +33,7 @@ const placeOrder = async (req, res) => {
         line_items.push({
             price_data: {
                 currency: currency,
-                product_data: {
-                    name: "Delivery Charge"
-                },
+                product_data: { name: "Delivery Charge" },
                 unit_amount: deliveryCharge * 100
             },
             quantity: 1
@@ -60,7 +54,6 @@ const placeOrder = async (req, res) => {
     }
 }
 
-// Placing User Order for Frontend using COD
 const placeOrderCod = async (req, res) => {
     try {
         const newOrder = new orderModel({
@@ -72,7 +65,6 @@ const placeOrderCod = async (req, res) => {
         })
         await newOrder.save();
         await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
-
         res.json({ success: true, message: "Order Placed" });
 
     } catch (error) {
@@ -81,7 +73,6 @@ const placeOrderCod = async (req, res) => {
     }
 }
 
-// Listing Orders for Admin panel
 const listOrders = async (req, res) => {
     try {
         const orders = await orderModel.find({});
@@ -92,7 +83,6 @@ const listOrders = async (req, res) => {
     }
 }
 
-// User Orders for Frontend
 const userOrders = async (req, res) => {
     try {
         const orders = await orderModel.find({ userId: req.body.userId });
@@ -103,10 +93,18 @@ const userOrders = async (req, res) => {
     }
 }
 
+// ✅ Updated with Socket.io
 const updateStatus = async (req, res) => {
-    console.log(req.body);
     try {
         await orderModel.findByIdAndUpdate(req.body.orderId, { status: req.body.status });
+        
+        // emit real-time update to the order room
+        const io = req.app.get('io')
+        io.to(req.body.orderId).emit('order_status_update', {
+            orderId: req.body.orderId,
+            status: req.body.status
+        })
+
         res.json({ success: true, message: "Status Updated" })
     } catch (error) {
         res.json({ success: false, message: "Error" })

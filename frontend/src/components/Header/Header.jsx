@@ -4,6 +4,11 @@ import foodVideo from '../../assets/food_video.mp4'
 import { motion } from 'framer-motion'
 
 const Header = () => {
+
+    const handleViewMenu = () => {
+        document.getElementById('explore-menu').scrollIntoView({ behavior: 'smooth' })
+    }
+
     return (
         <div className='header'>
             <video autoPlay muted loop className='header-video'>
@@ -33,6 +38,7 @@ const Header = () => {
                     transition={{ duration: 0.8, delay: 0.6 }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={handleViewMenu}
                 >
                     View Menu
                 </motion.button>

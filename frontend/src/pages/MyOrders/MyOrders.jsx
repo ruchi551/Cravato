@@ -43,7 +43,7 @@ const MyOrders = () => {
     const getStatusStyle = (status) => {
         switch (status) {
             case 'Food Processing':
-                return { backgroundColor: '#FFF3E0', color: '#E65100', border: '1px solid #E65100' }
+                return { backgroundColor: '#FFF3E0', color: '#E65100', border: '1px solid #e6e600' }
             case 'Out for Delivery':
                 return { backgroundColor: '#E3F2FD', color: '#1565C0', border: '1px solid #1565C0' }
             case 'Delivered':

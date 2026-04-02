@@ -149,7 +149,7 @@
 }
 
 .timeline-line.active {
-    background: #FF4C24;
+    background: #dc0606;
 }
 
 .order-right {
@@ -178,14 +178,14 @@
     border-radius: 50px;
     background: transparent;
     cursor: pointer;
-    color: #FF4C24;
+    color: #de9180;
     font-size: 13px;
     font-weight: 600;
     transition: 0.3s;
 }
 
 .my-orders button:hover {
-    background: #FF4C24;
+    background: #e77299;
     color: white;
     transform: scale(1.03);
 }

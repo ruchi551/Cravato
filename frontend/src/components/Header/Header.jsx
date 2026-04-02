@@ -6,7 +6,10 @@ import { motion } from 'framer-motion'
 const Header = () => {
 
     const handleViewMenu = () => {
-        document.getElementById('explore-menu').scrollIntoView({ behavior: 'smooth' })
+        const section = document.getElementById('explore-menu')
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' })
+        }
     }
 
     return (
@@ -16,32 +19,42 @@ const Header = () => {
             </video>
             <div className='header-overlay'></div>
             <div className='header-contents'>
+
+                <motion.p
+                    className="header-tag"
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                >
+                    Cravato.
+                </motion.p>
+
                 <motion.h2
                     initial={{ opacity: 0, y: -50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                 >
-                    Order your favourite food here
+                    Craving Something Delicious?
                 </motion.h2>
+
                 <motion.p
+                    className="header-subtext"
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
                 >
-                    Choose from a diverse menu featuring a delectable array of dishes crafted 
-                    with the finest ingredients and culinary expertise. Our mission is to satisfy 
-                    your cravings and elevate your dining experience, one delicious meal at a time.
+                    We've Got You Covered
                 </motion.p>
-                <motion.button
+
+                <motion.div
+                    className="header-buttons"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={handleViewMenu}
                 >
-                    View Menu
-                </motion.button>
+                    <button onClick={handleViewMenu}>Explore Menu</button>
+                </motion.div>
+
             </div>
         </div>
     )
